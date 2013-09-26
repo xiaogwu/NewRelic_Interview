@@ -17,8 +17,8 @@ post "/send" do
   mail = JSON.parse(params.keys.first)
 
   # Make sure there are some default values
-  mail[:to] ||= "frankywahl@gmail.com"
-  mail[:from] ||= "frankywahl@gmail.com"
+  mail[:to] ||= "Franky W. <frankywahl@gmail.com>"
+  mail[:from] ||= "Somebody <noreply@example.com>"
   mail[:subject] ||= "A subject"
   mail[:body] ||= "Body"
 
