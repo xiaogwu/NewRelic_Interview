@@ -1,2 +1,5 @@
 source 'https://rubygems.org'
 gem 'mail'
+gem 'sinatra'
+gem 'sinatra-reloader'
+gem 'pry'
