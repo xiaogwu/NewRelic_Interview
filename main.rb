@@ -19,9 +19,12 @@ require_relative "config/constants"
 # API POST method
 post "/send" do
 
+  # Make sure you work with JSON or HTTP request
+  mail_info = params == {} ? request.env["rack.input"].read : params.keys.first
+
   # Get data from user
   begin
-    mail = JSON.parse(params.keys.first)
+    mail = JSON.parse(mail_info)
   rescue
     # If format is not valid (typo in giving information), return the following
     return "Sorry, mis-formed information\n"
