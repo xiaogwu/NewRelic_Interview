@@ -16,6 +16,9 @@ require_relative "config/mailer"
 # Some constants
 require_relative "config/constants"
 
+# Make it accessible from anywhere
+set :bind, '0.0.0.0'
+
 # API POST method
 post "/send" do
 
@@ -42,7 +45,9 @@ post "/send" do
   # Create e-mail object
   email = new_mail(mail["to"], mail["from"], mail["subject"], mail["body"])
 
+
   # Actually send the e-mail
+  email.delivery_method :sendmail
   email.deliver
 
 end
