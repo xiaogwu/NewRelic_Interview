@@ -28,19 +28,29 @@ post "/send" do
   mail["body"] ||= "Body"
 
   # Make sure destination email is in a valid format
+  # otherwise replace it with the default
   mail["to"] = validate_email(mail["to"]) ? mail["to"] : DEFAULT_TO
 
-  # Create email object
-  email = Mail.new do
-    from     mail["from"]
-    to       mail["to"]
-    subject  mail["subject"]
-    body     mail["body"]
-  end
+  # Create e-mail object
+  email = new_mail(mail["to"], mail["from"], mail["subject"], mail["body"])
 
   # Actually send the e-mail
   email.deliver
 
+end
+
+# Method to create a new_mail object
+def new_mail(to, from, subject, body)
+  # Create email object
+  email = Mail.new do
+    from     from
+    to       to
+    subject  subject
+    body     body
+  end
+
+  # Explicit return, not needed
+  return email
 end
 
 
