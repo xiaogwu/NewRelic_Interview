@@ -27,7 +27,9 @@ post "/send" do
     mail = JSON.parse(mail_info)
   rescue
     # If format is not valid (typo in giving information), return the following
-    return {errors: "Sorry, mis-formed information"}.to_json
+    content_type :json
+    status 400
+    return body({errors: "Sorry, mis-formed information"}.to_json)
   end
 
   # Make sure there are some default values
@@ -46,7 +48,9 @@ post "/send" do
   email.deliver
 
   # Send response back
-  return {success: "true", errors: nil}.to_json
+  content_type :json
+  status 200
+  body({success: true, errors: nil, mail: email}.to_json)
 end
 
 # Method to create a new_mail object
