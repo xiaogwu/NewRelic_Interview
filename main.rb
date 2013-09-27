@@ -20,7 +20,12 @@ require_relative "config/constants"
 post "/send" do
 
   # Get data from user
-  mail = JSON.parse(params.keys.first)
+  begin
+    mail = JSON.parse(params.keys.first)
+  rescue
+    # If format is not valid (typo in giving information), return the following
+    return "Sorry, mis-formed information\n"
+  end
 
   # Make sure there are some default values
   mail["from"] ||= DEFAULT_FROM
