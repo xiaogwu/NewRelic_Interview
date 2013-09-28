@@ -19,12 +19,17 @@ require_relative "config/constants"
 # API POST method
 post "/send" do
 
-  # Make sure you work with JSON or HTTP request
-  mail_info = params == {} ? request.env["rack.input"].read : params.keys.first
+  # The following just puts the params hash in place
+  # if request comes from the webpage
+  if params["your_name"]
+    params.merge!("from" => "#{params['your_name']} <#{params['your_email']}>")
+    params.delete("your_name")
+    params.delete("your_email")
+  end
 
-  # Get data from user
+  # Make sure you work with JSON or HTTP request
   begin
-    mail = JSON.parse(mail_info)
+    mail = params == {} ? JSON.parse(request.body.read) : params
   rescue
     # If format is not valid (typo in giving information), return the following
     content_type :json
@@ -50,7 +55,7 @@ post "/send" do
   # Send response back
   content_type :json
   status 200
-  body({success: true, errors: nil, mail: email}.to_json)
+  body({success: true, errors: nil, to: mail["to"], from: mail["from"]}.to_json)
 end
 
 get "/" do

@@ -1,9 +1,18 @@
+# Send Mail API
+
 Sample API to send an email. 
 
 Use with the following command
 
-curl -X POST http://localhost:4567/send -d '{ "to": "John Doe <johndoe@example.com>", "subject": "hello world", "body": "Hi John! Sending you an email via this awesome API I just made on the interwebs." }'
+JSON format
 
-or if you like better  wget 
+```shell
+curl -H "Content-Type: application/json" -X POST http://localhost:4567/send -d '{ "to": "John Doe <johndoe@example.com>", "subject": "hello world", "body": "Hi John! Sending you an email via this awesome API I just made on the interwebs." }'
+```
 
-wget -O- --post-data='{ "to": "John Doe <johndoe@example.com>", "subject": "hello world", "body": "Hi John! Sending you an email via this awesome API I just made on the interwebs." }' "http://localhost:4567/send"
+
+HTTP format
+
+```shell
+curl -X POST http://localhost:4567/send -d 'to=John Doe <johndoe@example.com>&subject=hello world&body=Hi John! Sending you an email via this awesome API I just made on the interwebs'
+```

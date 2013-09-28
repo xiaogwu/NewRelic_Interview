@@ -1,11 +1,15 @@
-%h1 Hello
+%h1 Email Sender
 
-%form{action: "/send"}
+%form{action: "/send", method: "post"}
   %input{type: "text", name: "your_name", placeHolder: "Your Name"}
   %br
   %input{type: "text", name: "your_email", placeHolder: "Your e-mail"}
   %br
-  %input{type: "text", name: "their_email", placeHolder: "Their E-mail"}
+  %input{type: "text", name: "to", placeHolder: "Their E-mail"}
+  %br
+  %input{type: "text", name: "subject", placeHolder: "Subject"}
+  %br
+  %textarea{name: "body", placeHolder: "Content"}
   %br
   %button{type: "submit"}Send
 

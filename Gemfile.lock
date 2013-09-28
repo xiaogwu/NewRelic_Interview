@@ -3,7 +3,12 @@ GEM
   specs:
     backports (3.3.3)
     coderay (1.0.9)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.3)
     diff-lcs (1.2.4)
+    execjs (2.0.1)
     haml (4.0.3)
       tilt
     mail (2.5.4)
@@ -53,6 +58,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  coffee-script
   haml
   mail
   pry
