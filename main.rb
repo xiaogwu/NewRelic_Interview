@@ -53,6 +53,14 @@ post "/send" do
   body({success: true, errors: nil, mail: email}.to_json)
 end
 
+get "/" do
+  haml :index
+end
+
+get "js/script" do
+  coffee :"js/script"
+end
+
 # Method to create a new_mail object
 def new_mail(to, from, subject, body)
   # Create email object

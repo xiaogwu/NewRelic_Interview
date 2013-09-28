@@ -4,6 +4,8 @@ GEM
     backports (3.3.3)
     coderay (1.0.9)
     diff-lcs (1.2.4)
+    haml (4.0.3)
+      tilt
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -51,6 +53,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  haml
   mail
   pry
   rspec
