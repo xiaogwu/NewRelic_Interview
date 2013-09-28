@@ -62,9 +62,10 @@ get "/" do
   haml :index
 end
 
-get "js/script" do
-  coffee :"js/script"
-end
+#get "js/script" do
+#  content_type "text/javascript"
+#  coffee :"js/script"
+#end
 
 # Method to create a new_mail object
 def new_mail(to, from, subject, body)
